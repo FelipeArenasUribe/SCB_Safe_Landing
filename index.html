@@ -240,23 +240,22 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty</h1>
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Felipe Arenas-Uribe</a>,</span>
                 <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">T. Michael Seigler</a>,</span>
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Jesse B. Hoagg</a>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
                     <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <span class="author-block">Mechanical and Aerospace Department, University of Kentucky<br>Conference name and year</span>
+                    
                   </div>
 
                   <div class="column has-text-centered">
@@ -285,7 +284,7 @@
 
                   <!-- TODO: Replace with your GitHub repository URL -->
                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    <a href="https://github.com/FelipeArenasUribe/Asteroid_Safe_Landing" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -340,7 +339,7 @@
         <div class="content has-text-justified">
           <!-- TODO: Replace with your paper abstract -->
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            Soft landing on small celestial bodies (SCBs) presents control challenges due to highly irregular gravitational fields that are poorly captured by models. For over-actuated spacecraft, these challenges are compounded by the need to manage coupled 6-DOF dynamics while respecting individual actuator limits. This paper proposes an optimal control strategy that combines disturbance estimation, trajectory tracking, and safety enforcement for fully-actuated and over-actuated spacecraft. The approach begins by mapping the high-dimensional input constraints of the over-actuated system onto the lower-dimensional space of forces and moments using a polytope projection algorithm. This allows for a unified representation of admissible control efforts. An extended high-gain observer provides real-time estimation of gravitational disturbances, while a nominal control is designed using a feedback-linearizing controller to track position and attitude reference trajectories. To guarantee safety, a minimum-intervention quadratic program utilizing Control Barrier Functions enforces state and input constraints. Finally, an optimal control allocation layer distributes the safe forces and moments back to the individual actuators. Numerical simulations on irregularly shaped SCBs demonstrate that the proposed controller achieves safe landings across various actuator configurations, offering a robust solution for autonomous space missions.
           </p>
         </div>
       </div>

@@ -250,23 +250,22 @@
   </div>
 </section>
 
-<!-- Teaser video-->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/irreg_conf2.mp4" type="video/mp4">
+      
+      <video poster="" id="tree" autoplay controls muted loop preload="metadata"
+             style="display: block; margin: 0 auto 1.5rem auto; width: 100%; max-width: 800px; height: auto; border-radius: 6px;">
+        <source src="static/videos/irreg_conf1.mp4" type="video/mp4">
       </video>
-      <!-- TODO: Replace with your video description -->
+      
       <h2 class="subtitle has-text-centered">
         Safe soft-landing maneuver of over-actuated spacecraft on irregularly-shaped small celestial bodies.
       </h2>
+
     </div>
   </div>
 </section>
-<!-- End teaser video -->
 
 <!-- Paper abstract -->
 <section class="section hero is-light">
@@ -294,17 +293,9 @@
       
       <!-- Image Container (Centered and Responsive) -->
       <div class="image-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 2rem;">
-        <img src="static/images/your_image_file.png" 
-             alt="Description of your landing control results" 
+        <img src="static/images/Architecture.png" 
+             alt="Architecture for Safe control with state and input constraints under gravitational uncertainty. A desired control tracks a reference trajectory, while a safety-filter minimizes deviation from the desired input and guarantees safety despite gravitational uncertainty. An optimization-based allocation is then used to map the forces and torques to the actuator inputs." 
              style="width: 100%; max-width: 1565px; height: auto; aspect-ratio: 1565 / 395; display: block; border-radius: 6px;">
-      </div>
-
-      <!-- Descriptive Text Area -->
-      <div class="content has-text-justified">
-        <h3 class="title is-4 has-text-centered">Simulation Results & Performance Evaluation</h3>
-        <p>
-          Architecture for Safe control with state and input constraints under gravitational uncertainty. A desired control tracks a reference trajectory, while a safety-filter minimizes deviation from the desired input and guarantees safety despite gravitational uncertainty. An optimization-based allocation is then used to map the forces and torques to the actuator inputs.
-        </p>
       </div>
 
     </div>
@@ -316,7 +307,7 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3 has-text-centered">Another Carousel</h2>
+      <h2 class="title is-3 has-text-centered">Simulation Results & Performance Evaluation</h2>
       <div id="results-carousel" class="carousel results-carousel">
         
         <div class="item item-video1" style="display: flex; justify-content: center; align-items: center;">

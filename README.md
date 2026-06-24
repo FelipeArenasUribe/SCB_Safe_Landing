@@ -7,11 +7,11 @@ Autonomy, Robotics and Controls Lab
 University of Kentucky  
 
 <p align="center">
-  <img src="images/Ellip_traj.png" width="60%" />
+  <img src="static/images/Ellip_traj.png" width="60%" />
 </p>
 
 <p align="center">
-  <img src="images/Irreg_traj.png" width="45%" />
+  <img src="static/images/Irreg_traj.png" width="45%" />
 </p>
 
 
@@ -23,7 +23,7 @@ The framework integrates the following core components:
 - **Polytope-Based Constraint Mapping:** Maps high-dimensional actuator limits onto a lower-dimensional space of feasible forces and moments, allowing the controller to handle over-actuated spacecraft configurations seamlessly.
 
 <p align="center">
-  <img src="images/polytope_proj.png" width="25%" />
+  <img src="static/images/polytope_proj.png" width="25%" />
 </p>
 
 - **Real-Time Disturbance Estimation:** Utilizes an Extended High-Gain Observer (EHGO) to estimate and compensate for unmodeled gravitational accelerations in real time.
@@ -35,7 +35,7 @@ The framework integrates the following core components:
 - **Optimal Control Allocation:** Distributes the safety-filtered forces and moments back to individual actuators, ensuring the final commands remain within physical hardware limits.
 
 <p align="center">
-  <img src="images/Architecture.png" width="100%" />
+  <img src="static/images/Architecture.png" width="100%" />
 </p>
 
 ---

@@ -62,8 +62,8 @@
   <title>Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty - Felipe Arenas-Uribe, T. Michael Seigler, & Jesse B. Hoagg | Academic Research</title>
   
   <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="static/images/spacecraft.ico">
+  <link rel="apple-touch-icon" href="static/images/spacecraft.ico">
   
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -308,24 +308,33 @@
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3 has-text-centered">Simulations</h2>
+      
+      <div class="content has-text-centered" style="max-width: 800px; margin: 0 auto 2rem auto; padding: 0 15px;">
+        <p>
+          We evaluated the performance of the controller using two types of spacecraft: a robotic lander (similar to Hayabusa 2) and a Crewed Landing Module. 
+          Each spacecraft involves a different actuator configuration using bi0directional thrusters or reaction wheels. 
+          Moreover, two landing enviroments are considered: an ellipsoidal asteroid with uniform density distribution and an irregularly-shaped asteroid with non-uniform density distribution.
+        </p>
+      </div>
+
       <div id="results-carousel" class="carousel results-carousel">
         
         <div class="item item-video1" style="display: flex; justify-content: center; align-items: center;">
-          <video poster="" id="video1" controls muted loop preload="metadata" 
+          <video poster="" id="video1" controls muted autoplay loop preload="metadata" 
                  style="max-width: 600px; width: 100%; height: auto; aspect-ratio: 600 / 526; display: block; margin: 0 auto;">
             <source src="static/videos/ellip_conf1.mp4" type="video/mp4">
           </video>
         </div>
         
         <div class="item item-video2" style="display: flex; justify-content: center; align-items: center;">
-          <video poster="" id="video2" controls muted loop preload="metadata" 
+          <video poster="" id="video2" controls muted autoplay loop preload="metadata" 
                  style="max-width: 600px; width: 100%; height: auto; aspect-ratio: 600 / 526; display: block; margin: 0 auto;">
             <source src="static/videos/irreg_conf1.mp4" type="video/mp4">
           </video>
         </div>
         
         <div class="item item-video3" style="display: flex; justify-content: center; align-items: center;">
-          <video poster="" id="video3" controls muted loop preload="metadata" 
+          <video poster="" id="video3" controls muted autoplay loop preload="metadata" 
                  style="max-width: 600px; width: 100%; height: auto; aspect-ratio: 600 / 526; display: block; margin: 0 auto;">
             <source src="static/videos/irreg_conf2.mp4" type="video/mp4">
           </video>

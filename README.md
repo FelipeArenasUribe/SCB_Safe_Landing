@@ -1,7 +1,6 @@
 # Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty
 
-Project page for a manuscript currently under review at *Frontiers in Robotics and AI*, by
-Felipe Arenas-Uribe, T. Michael Seigler, and Jesse B. Hoagg (University of Kentucky).
+Project page for a manuscript currently under review.
 
 **Live page:** https://felipearenasuribe.github.io/SCB_Safe_Landing/
 **Code:** https://github.com/FelipeArenasUribe/Asteroid_Safe_Landing (currently private &mdash; will be made public alongside the paper)
@@ -10,15 +9,7 @@ Felipe Arenas-Uribe, T. Michael Seigler, and Jesse B. Hoagg (University of Kentu
 This repository contains only the static site (HTML/CSS/JS/media) for the project page above.
 The controller implementation and simulation code live in a separate repository (linked once available).
 
-## Local preview
 
-The page is plain static HTML with no build step. To preview locally:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open `http://localhost:8000` in a browser.
 
 ## Citation
 

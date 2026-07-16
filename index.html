@@ -17,12 +17,13 @@
   <meta property="og:site_name" content="University of Kentucky">
   <meta property="og:title" content="Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty">
   <meta property="og:description" content="An optimal control strategy using disturbance estimation and Control Barrier Functions to guarantee safe spacecraft landing on small celestial bodies.">
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:url" content="https://felipearenasuribe.github.io/SCB_Safe_Landing/">
+  <meta property="og:image" content="https://felipearenasuribe.github.io/SCB_Safe_Landing/static/images/Irreg_traj.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty - Research Preview">
-  <meta property="article:published_time" content="2026"> <!-- TODO: Update to actual publication date -->
+  <meta property="og:image:alt" content="Spacecraft landing trajectory on an irregularly-shaped small celestial body">
+  <!-- TODO: this reuses an existing figure as a stand-in social card. For best results on X/LinkedIn/Slack,
+       create a dedicated 1200x630 image (e.g. title + trajectory teaser) and swap it in above and below. -->
   <meta property="article:author" content="Felipe Arenas-Uribe">
   <meta property="article:section" content="Research">
   <meta property="article:tag" content="Control Barrier Functions">
@@ -30,21 +31,25 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@YOUR_LAB_TWITTER_HANDLE">
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
   <meta name="twitter:title" content="Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty">
   <meta name="twitter:description" content="An optimal control strategy using disturbance estimation and Control Barrier Functions to guarantee safe spacecraft landing on small celestial bodies.">
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty - Research Preview">
+  <meta name="twitter:image" content="https://felipearenasuribe.github.io/SCB_Safe_Landing/static/images/Irreg_traj.png">
+  <meta name="twitter:image:alt" content="Spacecraft landing trajectory on an irregularly-shaped small celestial body">
+  <!-- TODO: add twitter:site / twitter:creator (e.g. "@your_handle") if/when you have one -->
 
   <!-- Academic/Research Specific -->
+  <!-- NOTE: citation_* tags are commented out until the paper is accepted/posted as a preprint,
+       to avoid Google Scholar indexing a paper that isn't publicly available yet. Uncomment and
+       fill in citation_journal_title, citation_publication_date, and citation_pdf_url once ready. -->
+  <!--
   <meta name="citation_title" content="Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty">
   <meta name="citation_author" content="Arenas-Uribe, Felipe">
   <meta name="citation_author" content="Seigler, T. Michael">
   <meta name="citation_author" content="Hoagg, Jesse B.">
-  <meta name="citation_publication_date" content="2026"> <!-- TODO: Update year if published later -->
-  <meta name="citation_conference_title" content="CONFERENCE_OR_JOURNAL_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="Frontiers in Robotics and AI">
+  <meta name="citation_pdf_url" content="https://felipearenasuribe.github.io/SCB_Safe_Landing/static/pdfs/paper.pdf">
+  -->
   
   <!-- Additional SEO -->
   <meta name="theme-color" content="#2563eb">
@@ -59,7 +64,7 @@
   <link rel="preconnect" href="https://documentcloud.adobe.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-  <title>Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty - Felipe Arenas-Uribe, T. Michael Seigler, & Jesse B. Hoagg | Academic Research</title>
+  <title>Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty</title>
   
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/spacecraft.ico">
@@ -126,13 +131,13 @@
         }
       }
     ],
-    "datePublished": "July, 2026",
+    "creativeWorkStatus": "Under review",
     "publisher": {
       "@type": "Organization",
-      "name": "Submitted to..."
+      "name": "Frontiers in Robotics and AI"
     },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "url": "https://felipearenasuribe.github.io/SCB_Safe_Landing/",
+    "image": "https://felipearenasuribe.github.io/SCB_Safe_Landing/static/images/Irreg_traj.png",
     "keywords": [
       "spacecraft control", 
       "small celestial bodies", 
@@ -143,12 +148,10 @@
       "6-DOF dynamics"
     ],
     "abstract": "Soft landing on small celestial bodies (SCBs) presents control challenges due to highly irregular gravitational fields that are poorly captured by models. For over-actuated spacecraft, these challenges are compounded by the need to manage coupled 6-DOF dynamics while respecting individual actuator limits. This paper proposes an optimal control strategy that combines disturbance estimation, trajectory tracking, and safety enforcement for fully-actuated and over-actuated spacecraft. The approach begins by mapping the high-dimensional input constraints of the over-actuated system onto the lower-dimensional space of forces and moments using a polytope projection algorithm. This allows for a unified representation of admissible control efforts. An extended high-gain observer provides real-time estimation of gravitational disturbances, while a nominal control is designed using a feedback-linearizing controller to track position and attitude reference trajectories. To guarantee safety, a minimum-intervention quadratic program utilizing Control Barrier Functions enforces state and input constraints. Finally, an optimal control allocation layer distributes the safe forces and moments back to the individual actuators. Numerical simulations on irregularly shaped SCBs demonstrate that the proposed controller achieves safe landings across various actuator configurations, offering a robust solution for autonomous space missions.",
-    "citation": "@article{arenas2026safe,\n  title={Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty},\n  author={Arenas-Uribe, Felipe and Seigler, T Michael and Hoagg, Jesse B},\n  year={2026}\n}",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "isAccessibleForFree": false,
     "mainEntity": {
       "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+      "@id": "https://felipearenasuribe.github.io/SCB_Safe_Landing/"
     },
     "about": [
       {
@@ -169,9 +172,8 @@
     "@type": "Organization",
     "name": "University of Kentucky",
     "url": "https://www.uky.edu",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "logo": "https://felipearenasuribe.github.io/SCB_Safe_Landing/static/images/spacecraft.ico",
     "sameAs": [
-      "https://twitter.com/YOUR_LAB_TWITTER_HANDLE",
       "https://github.com/FelipeArenasUribe"
     ]
   }
@@ -208,21 +210,21 @@
           </div>
 
           <div class="is-size-6 publication-authors">
-            <span class="author-block"><strong>PREPRINT - 2026</strong></span>
+            <span class="author-block"><strong>Under Review &mdash; Frontiers in Robotics and AI</strong></span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              
+              <!-- TODO: once a preprint is posted, re-add an arXiv/Paper button here, e.g.:
               <span class="link-block">
-                <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
+                <a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
                   <span>arXiv</span>
                 </a>
               </span>
+              -->
 
+              <!-- NOTE: this repo is currently private and will be made public alongside the paper -->
               <span class="link-block">
                 <a href="https://github.com/FelipeArenasUribe/Asteroid_Safe_Landing" target="_blank" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -274,7 +276,6 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
           <p>
             Soft landing on small celestial bodies (SCBs) presents control challenges due to highly irregular gravitational fields that are poorly captured by models. For over-actuated spacecraft, these challenges are compounded by the need to manage coupled 6-DOF dynamics while respecting individual actuator limits. This paper proposes an optimal control strategy that combines disturbance estimation, trajectory tracking, and safety enforcement for fully-actuated and over-actuated spacecraft. The approach begins by mapping the high-dimensional input constraints of the over-actuated system onto the lower-dimensional space of forces and moments using a polytope projection algorithm. This allows for a unified representation of admissible control efforts. An extended high-gain observer provides real-time estimation of gravitational disturbances, while a nominal control is designed using a feedback-linearizing controller to track position and attitude reference trajectories. To guarantee safety, a minimum-intervention quadratic program utilizing Control Barrier Functions enforces state and input constraints. Finally, an optimal control allocation layer distributes the safe forces and moments back to the individual actuators. Numerical simulations on irregularly shaped SCBs demonstrate that the proposed controller achieves safe landings across various actuator configurations, offering a robust solution for autonomous space missions.
           </p>
@@ -286,6 +287,67 @@
 <!-- End paper abstract -->
 
 
+<section class="hero is-small" id="problem-setup">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+
+      <h2 class="title is-4 has-text-centered mb-5">The Landing Problem</h2>
+
+      <div class="content has-text-justified" style="max-width: 760px; margin: 0 auto 2.5rem auto;">
+        <p>
+          A spacecraft must descend from a hovering position to a target touchdown site on a small,
+          irregularly-shaped asteroid whose weak, poorly-known gravity field makes standard landing
+          controllers unreliable. Beyond simply reaching the surface, the vehicle must stay within a
+          safe approach corridor for the entire descent:
+        </p>
+      </div>
+
+      <div class="columns is-centered is-vcentered">
+
+        <div class="column is-one-third has-text-centered">
+          <img src="static/images/Asteroid_Spacecraft.jpg"
+               alt="Spacecraft position and attitude defined relative to a rotating asteroid frame and an inertial frame"
+               style="width: 100%; max-width: 300px; height: auto; border-radius: 6px;">
+          <p class="is-size-7" style="color: #4a4a4a; margin-top: 0.75rem;">
+            The spacecraft's position and attitude are tracked relative to the asteroid, which rotates
+            independently in inertial space.
+          </p>
+        </div>
+
+        <div class="column is-one-third has-text-centered">
+          <img src="static/images/gs_cons.jpg"
+               alt="Glideslope cone constraint restricting the spacecraft to a safe approach path above the landing site"
+               style="width: 100%; max-width: 300px; height: auto; border-radius: 6px;">
+          <p class="is-size-7" style="color: #4a4a4a; margin-top: 0.75rem;">
+            A glideslope cone keeps the vehicle on a safe approach path, ruling out shallow,
+            surface-grazing trajectories.
+          </p>
+        </div>
+
+        <div class="column is-one-third has-text-centered">
+          <img src="static/images/bs_cons.jpg"
+               alt="Boresight cone constraint keeping the spacecraft's sensing axis pointed at the landing site"
+               style="width: 100%; max-width: 300px; height: auto; border-radius: 6px;">
+          <p class="is-size-7" style="color: #4a4a4a; margin-top: 0.75rem;">
+            A boresight cone keeps the vehicle pointed at the landing site throughout the approach.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="content has-text-justified" style="max-width: 760px; margin: 1.5rem auto 0 auto;">
+        <p>
+          Together with limits on speed and actuator effort, these constraints define the safe set that
+          the controller must enforce in real time &mdash; despite never knowing the asteroid's gravity
+          field exactly.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container is-max-desktop">
@@ -294,7 +356,7 @@
       
       <figure style="margin: 0;">
         <div class="image-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 1.5rem;">
-          <img src="static/images/Architecture.png" 
+          <img src="static/images/Architecture.jpg" 
                alt="Architecture for Safe control with state and input constraints under gravitational uncertainty. A desired control tracks a reference trajectory, while a safety-filter minimizes deviation from the desired input and guarantees safety despite gravitational uncertainty. An optimization-based allocation is then used to map the forces and torques to the actuator inputs." 
                style="width: 100%; max-width: 1565px; height: auto; aspect-ratio: 1565 / 395; display: block; border-radius: 6px;">
         </div>
@@ -319,8 +381,8 @@
       
       <figure style="margin: 0;">
         <div class="image-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 1.5rem;">
-          <img src="static/images/polytope_proj.png" 
-               alt="." 
+          <img src="static/images/polytope_proj.jpg" 
+               alt="Diagram showing the polytope U of admissible actuator inputs projected through the affine mapping M onto the lower-dimensional polytope Phi of admissible control forces and torques" 
                style="width: 100%; max-width: 680px; height: auto; aspect-ratio: 680 / 278; display: block; border-radius: 6px;">
         </div>
 
@@ -386,10 +448,16 @@
         <span class="copy-text">Copy</span>
       </button>
     </div>
+    <p class="content" style="margin-bottom: 1rem;">
+      This journal manuscript is currently under review; the citation below will be updated upon acceptance.
+      A preliminary version of this work is available now as a
+      <a href="https://arxiv.org/abs/2510.05895" target="_blank">conference paper (ACC 2026 submission)</a>.
+    </p>
     <pre id="bibtex-code"><code>@article{arenas2026safe,
   title={Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty},
   author={Arenas-Uribe, Felipe and Seigler, T. Michael and Hoagg, Jesse B.},
-  journal={arXiv preprint arXiv:<ARXIV PAPER ID>},
+  journal={Frontiers in Robotics and AI},
+  note={Under review},
   year={2026}
 }</code></pre>
   </div>

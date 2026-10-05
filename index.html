@@ -3,476 +3,353 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <meta name="title" content="Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty - Felipe Arenas-Uribe, T. Michael Seigler, Jesse B. Hoagg">
-  <meta name="description" content="An optimal control strategy using disturbance estimation and Control Barrier Functions to guarantee safe spacecraft landing on small celestial bodies.">
-  <meta name="keywords" content="spacecraft control, small celestial bodies, asteroid landing, Control Barrier Functions, high-gain observer, control allocation, 6-DOF dynamics, aerospace engineering">
+
+  <title>Safe Position and Attitude Control for Landing on Small Celestial Bodies</title>
+  <meta name="description" content="Safe spacecraft landing on small celestial bodies under gravitational uncertainty, with coupled position-attitude control and strict state and actuator constraints.">
+  <meta name="keywords" content="spacecraft control, small celestial bodies, asteroid landing, control barrier functions, high-gain observer, control allocation, 6-DOF dynamics">
   <meta name="author" content="Felipe Arenas-Uribe, T. Michael Seigler, Jesse B. Hoagg">
   <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
+  <meta name="theme-color" content="#08111f">
+
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="University of Kentucky">
   <meta property="og:title" content="Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty">
-  <meta property="og:description" content="An optimal control strategy using disturbance estimation and Control Barrier Functions to guarantee safe spacecraft landing on small celestial bodies.">
+  <meta property="og:description" content="An optimal control framework for safe spacecraft landing under gravitational uncertainty and strict actuator limits.">
   <meta property="og:url" content="https://felipearenasuribe.github.io/SCB_Safe_Landing/">
   <meta property="og:image" content="https://felipearenasuribe.github.io/SCB_Safe_Landing/static/images/Irreg_traj.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Spacecraft landing trajectory on an irregularly-shaped small celestial body">
-  <!-- TODO: this reuses an existing figure as a stand-in social card. For best results on X/LinkedIn/Slack,
-       create a dedicated 1200x630 image (e.g. title + trajectory teaser) and swap it in above and below. -->
-  <meta property="article:author" content="Felipe Arenas-Uribe">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="Control Barrier Functions">
-  <meta property="article:tag" content="Spacecraft Control">
+  <meta property="og:image:alt" content="Spacecraft landing trajectory on an irregularly shaped small celestial body">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty">
-  <meta name="twitter:description" content="An optimal control strategy using disturbance estimation and Control Barrier Functions to guarantee safe spacecraft landing on small celestial bodies.">
+  <meta name="twitter:title" content="Safe Position and Attitude Control for Landing on Small Celestial Bodies">
+  <meta name="twitter:description" content="Position-attitude control, disturbance estimation, and safety enforcement for asteroid landing.">
   <meta name="twitter:image" content="https://felipearenasuribe.github.io/SCB_Safe_Landing/static/images/Irreg_traj.png">
-  <meta name="twitter:image:alt" content="Spacecraft landing trajectory on an irregularly-shaped small celestial body">
-  <!-- TODO: add twitter:site / twitter:creator (e.g. "@your_handle") if/when you have one -->
 
-  <!-- Academic/Research Specific -->
-  <!-- NOTE: citation_* tags are commented out until the paper is accepted/posted as a preprint,
-       to avoid Google Scholar indexing a paper that isn't publicly available yet. Uncomment and
-       fill in citation_journal_title, citation_publication_date, and citation_pdf_url once ready. -->
-  <!--
   <meta name="citation_title" content="Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty">
   <meta name="citation_author" content="Arenas-Uribe, Felipe">
   <meta name="citation_author" content="Seigler, T. Michael">
   <meta name="citation_author" content="Hoagg, Jesse B.">
   <meta name="citation_publication_date" content="2026">
-  <meta name="citation_journal_title" content="Frontiers in Robotics and AI">
-  <meta name="citation_pdf_url" content="https://felipearenasuribe.github.io/SCB_Safe_Landing/static/pdfs/paper.pdf">
-  -->
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <meta name="citation_pdf_url" content="https://felipearenasuribe.github.io/SCB_Safe_Landing/static/pdfs/Safe_Landing_on_Small_Celestial_Bodies.pdf">
 
-  <title>Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty</title>
-  
-  <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/spacecraft.ico">
   <link rel="apple-touch-icon" href="static/images/spacecraft.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     "headline": "Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty",
-    "description": "An optimal control strategy using disturbance estimation and Control Barrier Functions to guarantee safe spacecraft landing on small celestial bodies.",
+    "description": "An optimal control framework for safe landing under gravitational uncertainty and strict actuator limits.",
     "author": [
-      {
-        "@type": "Person",
-        "name": "Felipe Arenas-Uribe",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "University of Kentucky"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "T. Michael Seigler",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "University of Kentucky"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "Jesse B. Hoagg",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "University of Kentucky"
-        }
-      }
+      {"@type": "Person", "name": "Felipe Arenas-Uribe"},
+      {"@type": "Person", "name": "T. Michael Seigler"},
+      {"@type": "Person", "name": "Jesse B. Hoagg"}
     ],
+    "affiliation": {"@type": "Organization", "name": "University of Kentucky"},
     "creativeWorkStatus": "Under review",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Frontiers in Robotics and AI"
-    },
+    "datePublished": "2026",
+    "isAccessibleForFree": true,
     "url": "https://felipearenasuribe.github.io/SCB_Safe_Landing/",
-    "image": "https://felipearenasuribe.github.io/SCB_Safe_Landing/static/images/Irreg_traj.png",
-    "keywords": [
-      "spacecraft control", 
-      "small celestial bodies", 
-      "asteroid landing", 
-      "Control Barrier Functions", 
-      "high-gain observer", 
-      "control allocation", 
-      "6-DOF dynamics"
-    ],
-    "abstract": "Soft landing on small celestial bodies (SCBs) presents control challenges due to highly irregular gravitational fields that are poorly captured by models. For over-actuated spacecraft, these challenges are compounded by the need to manage coupled 6-DOF dynamics while respecting individual actuator limits. This paper proposes an optimal control strategy that combines disturbance estimation, trajectory tracking, and safety enforcement for fully-actuated and over-actuated spacecraft. The approach begins by mapping the high-dimensional input constraints of the over-actuated system onto the lower-dimensional space of forces and moments using a polytope projection algorithm. This allows for a unified representation of admissible control efforts. An extended high-gain observer provides real-time estimation of gravitational disturbances, while a nominal control is designed using a feedback-linearizing controller to track position and attitude reference trajectories. To guarantee safety, a minimum-intervention quadratic program utilizing Control Barrier Functions enforces state and input constraints. Finally, an optimal control allocation layer distributes the safe forces and moments back to the individual actuators. Numerical simulations on irregularly shaped SCBs demonstrate that the proposed controller achieves safe landings across various actuator configurations, offering a robust solution for autonomous space missions.",
-    "isAccessibleForFree": false,
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://felipearenasuribe.github.io/SCB_Safe_Landing/"
+    "encoding": {
+      "@type": "MediaObject",
+      "contentUrl": "https://felipearenasuribe.github.io/SCB_Safe_Landing/static/pdfs/Safe_Landing_on_Small_Celestial_Bodies.pdf",
+      "encodingFormat": "application/pdf"
     },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "Aerospace Engineering"
-      },
-      {
-        "@type": "Thing", 
-        "name": "Control Theory"
-      }
-    ]
-  }
-  </script>
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "University of Kentucky",
-    "url": "https://www.uky.edu",
-    "logo": "https://felipearenasuribe.github.io/SCB_Safe_Landing/static/images/spacecraft.ico",
-    "sameAs": [
-      "https://github.com/FelipeArenasUribe"
-    ]
+    "keywords": ["spacecraft control", "asteroid landing", "control barrier functions", "gravitational uncertainty", "control allocation"]
   }
   </script>
 </head>
+
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
+  <header class="site-header" aria-label="Primary navigation">
+    <div class="nav-shell">
+      <a class="site-mark" href="#top" aria-label="SCB Safe Landing home">
+        <span class="site-mark-orbit" aria-hidden="true"></span>
+        <span>SCB Safe Landing</span>
+      </a>
+      <nav class="site-nav" aria-label="Page sections">
+        <a href="#overview">Contributions</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#paper">Paper</a>
+      </nav>
+    </div>
+  </header>
 
   <main id="main-content">
-    
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          
-          <h1 class="title is-1 publication-title">
-            Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty
-          </h1>
-          
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">Felipe Arenas-Uribe,</span>
-            <span class="author-block">T. Michael Seigler,</span>
-            <span class="author-block">Jesse B. Hoagg</span>
+    <section class="hero-section" id="top">
+      <div class="star-field" aria-hidden="true"></div>
+      <div class="page-shell hero-grid">
+        <div class="hero-copy reveal">
+          <h1>Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty</h1>
+
+          <div class="author-list" aria-label="Authors">
+            <span>Felipe Arenas-Uribe</span>
+            <span>T. Michael Seigler</span>
+            <span>Jesse B. Hoagg</span>
+          </div>
+          <p class="affiliation">Department of Mechanical and Aerospace Engineering · University of Kentucky</p>
+
+          <div class="publication-links">
+            <a class="button button-primary" href="https://arxiv.org/abs/2510.05895" target="_blank" rel="noopener">
+              <i class="fas fa-book-open" aria-hidden="true"></i><span>arXiv</span>
+            </a>
+            <a class="button button-secondary" href="https://github.com/FelipeArenasUribe/Asteroid_Safe_Landing" target="_blank" rel="noopener">
+              <i class="fab fa-github" aria-hidden="true"></i><span>Code</span>
+            </a>
+            <a class="button button-quiet" href="#bibtex">
+              <i class="fas fa-quote-right" aria-hidden="true"></i><span>BibTeX</span>
+            </a>
           </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">Department of Mechanical and Aerospace Engineering, University of Kentucky</span>
+          <p class="review-note">Under review at <em>Frontiers in Robotics and AI</em></p>
+        </div>
+
+        <figure class="hero-media reveal reveal-delay">
+          <div class="video-frame">
+            <video id="teaser-video" autoplay controls muted loop playsinline preload="metadata" poster="static/images/Irreg_traj.png">
+              <source src="static/videos/irreg_conf2.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
           </div>
+          <figcaption>Safe soft landing on an irregularly shaped asteroid using the crewed landing-module configuration.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-          <div class="is-size-6 publication-authors">
-            <span class="author-block"><strong>Under Review &mdash; Frontiers in Robotics and AI</strong></span>
-          </div>
+    <section class="section section-light" id="overview">
+      <div class="page-shell">
+        <div class="section-heading reveal">
+          <p class="section-index">Main contributions</p>
+          <h2>Safe constrained pose control under uncertain gravity</h2>
+          <p>The paper combines four elements needed for position-and-attitude landing control on a small celestial body.</p>
+        </div>
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- TODO: once a preprint is posted, re-add an arXiv/Paper button here, e.g.:
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              -->
-
-              <!-- NOTE: this repo is currently private and will be made public alongside the paper -->
-              <span class="link-block">
-                <a href="https://github.com/FelipeArenasUribe/Asteroid_Safe_Landing" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                </a>
-              </span>
-
-              <span class="link-block">
-                <a href="#BibTeX" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fas fa-file-code"></i>
-                  </span>
-                  <span>BibTeX</span>
-                </a>
-              </span>
-
+        <div class="contribution-grid">
+          <article class="contribution-item reveal">
+            <span class="contribution-number">01</span>
+            <div>
+              <h3>Coupled position-attitude control</h3>
+              <p>Pose control is formulated on R<sup>3</sup> × SO(3), with constraints on position, attitude, velocity, and angular velocity.</p>
             </div>
+          </article>
+          <article class="contribution-item reveal reveal-delay-sm">
+            <span class="contribution-number">02</span>
+            <div>
+              <h3>Dynamic uncertainty bound</h3>
+              <p>An extended high-gain observer estimates the gravitational disturbance together with a time-varying upper bound on its estimation error.</p>
+            </div>
+          </article>
+          <article class="contribution-item reveal reveal-delay">
+            <span class="contribution-number">03</span>
+            <div>
+              <h3>Exact actuator-constraint representation</h3>
+              <p>Polytope projection maps individual actuator bounds into equivalent constraints on the net control forces and torques.</p>
+            </div>
+          </article>
+          <article class="contribution-item reveal reveal-delay-lg">
+            <span class="contribution-number">04</span>
+            <div>
+              <h3>Closed-form safety filter</h3>
+              <p>A composite control barrier function yields a single-constraint quadratic program with a closed-form solution for safe optimal control.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="abstract-panel reveal">
+          <div class="abstract-label">Abstract</div>
+          <div class="abstract-copy">
+            <p>Landing on small celestial bodies is challenging because the spacecraft must satisfy safety and actuator constraints despite gravitational forces that are difficult to model accurately. This article presents an optimal control for safe landing with gravitational uncertainty and strict actuator limits.</p>
+            <p>The approach addresses spacecraft pose control with attitude represented on SO(3), where there are constraints on position, attitude, velocity, angular velocity, and the actuators. An extended high-gain observer estimates the gravitational uncertainty and provides a dynamic upper bound on the estimation error. A composite control barrier function is then used to compute optimal forces and torques that satisfy the state and actuator constraints while tracking a landing trajectory. Finally, an optimal allocation maps the forces and torques to feasible actuator commands. The method is demonstrated in simulation using two vehicle configurations with severe gravitational uncertainty.</p>
           </div>
-
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      
-      <video poster="" id="teaser-video" autoplay controls muted loop preload="metadata"
-             style="display: block; margin: 0 auto 1.5rem auto; width: 100%; max-width: 650px; height: auto; border-radius: 6px;">
-        <source src="static/videos/irreg_conf2.mp4" type="video/mp4">
-      </video>
-      
-      <h2 class="subtitle has-text-centered">
-        Safe soft-landing maneuver of over-actuated spacecraft on irregularly-shaped asteroid.
-      </h2>
+    <section class="section" id="problem">
+      <div class="page-shell">
+        <div class="section-heading split-heading reveal">
+          <div>
+            <p class="section-index">01 · Problem</p>
+            <h2>Constrained landing problem</h2>
+          </div>
+          <p>The spacecraft must approach the touchdown site inside a safe corridor, maintain sensor visibility, respect speed limits, and never request more than its actuators can deliver.</p>
+        </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Soft landing on small celestial bodies (SCBs) presents control challenges due to highly irregular gravitational fields that are poorly captured by models. For overactuated spacecraft, these challenges are compounded by the need to manage coupled 6-DOF dynamics while satisfying actuator limits. This paper proposes an optimal control strategy that combines disturbance estimation, trajectory tracking, and safety enforcement for fully actuated and overactuated spacecraft. We map actuator constraints onto the lower-dimensional space of forces and torques using a polytope projection algorithm. This transforms the control variable from actuator inputs to control forces and torques, and allows to represent the actuator constraints as constraints on the forces and torques. Next, an extended high-gain observer provides real-time estimation of gravitational disturbances, while a nominal control is designed using a feedback-linearizing controller to track position and attitude reference trajectories. To guarantee safety, a minimum-intervention quadratic program utilizing Control Barrier Functions enforces state and input constraints. Finally, an optimal control allocation maps the safe forces and torques to the actuator inputs. Numerical simulations on irregularly shaped SCBs demonstrate that the proposed controller achieves safe landings across various actuator configurations, offering a robust algorithm for autonomous space missions.          </p>
+        <div class="problem-grid">
+          <figure class="figure-card figure-card-wide reveal">
+            <img src="static/images/GS-FOV-Constraints.png" alt="Glideslope and boresight cone constraints around an asteroid landing site" loading="lazy">
+            <figcaption>
+              <strong>Geometric safety constraints</strong>
+              <span>The glideslope cone protects the approach corridor; the boresight cone keeps the spacecraft pointed toward the landing site.</span>
+            </figcaption>
+          </figure>
+          <figure class="figure-card reveal reveal-delay-sm">
+            <img src="static/images/Asteroid_Spacecraft.png" alt="Spacecraft position and attitude relative to asteroid-fixed and body-fixed frames" loading="lazy">
+            <figcaption>
+              <strong>Coupled pose dynamics</strong>
+              <span>Position and attitude evolve together relative to a rotating, irregular body.</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
+    </section>
 
+    <section class="section method-section" id="method">
+      <div class="page-shell">
+        <div class="section-heading centered light-heading reveal">
+          <p class="section-index">02 · Method</p>
+          <h2>Control architecture</h2>
+          <p>The proposed controller combines disturbance estimation, nominal trajectory tracking, safety enforcement, and control allocation.</p>
+        </div>
 
-<section class="hero is-small" id="problem-setup">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
+        <figure class="architecture-card reveal">
+          <img src="static/images/Architecture.png" alt="Control architecture connecting the reference trajectory, desired control, uncertainty estimator, safety filter, control allocation, actuators, and spacecraft" loading="lazy">
+          <figcaption>The safety filter sits between the nominal tracking controller and the control allocator, changing the command only when a constraint requires it.</figcaption>
+        </figure>
 
-      <h2 class="title is-4 has-text-centered mb-5">Problem Formulation</h2>
+        <div class="method-grid">
+          <article class="method-step reveal">
+            <span>1</span>
+            <h3>Polytope projection</h3>
+            <p>Map the high-dimensional actuator set into an exact polytope of admissible forces and torques.</p>
+          </article>
+          <article class="method-step reveal reveal-delay-sm">
+            <span>2</span>
+            <h3>Disturbance estimation</h3>
+            <p>Estimate gravitational uncertainty online and update a bound on the residual estimation error.</p>
+          </article>
+          <article class="method-step reveal reveal-delay">
+            <span>3</span>
+            <h3>Composite barrier filter</h3>
+            <p>Use a composite barrier constraint to find the closest safe force-and-torque command.</p>
+          </article>
+          <article class="method-step reveal reveal-delay-lg">
+            <span>4</span>
+            <h3>Control allocation</h3>
+            <p>Distribute the safe command across thrusters and reaction wheels without violating individual limits.</p>
+          </article>
+        </div>
 
-      <div class="content has-text-justified" style="max-width: 760px; margin: 0 auto 2.5rem auto;">
-        <p>
-          A spacecraft must descend to a target touchdown site on a small,
-          irregularly-shaped asteroid. Beyond simply reaching the surface, the vehicle must satisfy safety and input constraints:
-        </p>
+        <div class="technical-highlight reveal">
+          <div class="technical-copy">
+            <p class="section-index">Input-constraint transformation</p>
+            <h3>Actuator limits in force-torque space</h3>
+            <p>Polytope projection converts individual actuator bounds into equivalent inequalities on the net force and torque. The safety filter can therefore enforce the true hardware limits directly, before the allocation layer recovers actuator commands.</p>
+          </div>
+          <img src="static/images/polytope_proj.png" alt="Projection of the actuator-input polytope into the lower-dimensional force-and-torque space" loading="lazy">
+        </div>
       </div>
+    </section>
 
-      <div class="columns is-centered is-vcentered">
+    <section class="section results-section" id="results">
+      <div class="page-shell results-grid">
+        <div class="results-copy reveal">
+          <p class="section-index">03 · Results</p>
+          <h2>Simulation study</h2>
+          <p>The numerical study evaluates the controller across two vehicle configurations and two small-body models under severe gravitational uncertainty.</p>
 
-        <div class="column is-one-third has-text-centered">
-          <img src="static/images/Asteroid_Spacecraft.jpg"
-               alt="Spacecraft position and attitude defined relative to a rotating asteroid frame and an inertial frame"
-               style="width: 100%; max-width: 300px; height: auto; border-radius: 6px;">
-          <p class="is-size-7" style="color: #4a4a4a; margin-top: 0.75rem;">
-            Spacecraft orbiting an asteroid. Opaque spacecraft represents desired landing pose.
-          </p>
+          <dl class="study-details">
+            <div><dt>Vehicles</dt><dd>Robotic lander and crewed landing module</dd></div>
+            <div><dt>Body models</dt><dd>Ellipsoidal and irregular shapes</dd></div>
+            <div><dt>Actuation</dt><dd>Bidirectional thrusters; thrusters with reaction wheels</dd></div>
+          </dl>
+
+          <div class="simulation-tabs" role="tablist" aria-label="Simulation scenarios">
+            <button class="simulation-tab is-active" type="button" role="tab" aria-selected="true" data-video="static/videos/ellip_conf1.mp4" data-title="Robotic lander · Ellipsoidal body" data-caption="Configuration 1 uses bidirectional thrusters to descend toward a landing site on an ellipsoidal small body.">Ellipsoid</button>
+            <button class="simulation-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/irreg_conf1.mp4" data-title="Robotic lander · Irregular body" data-caption="The robotic lander repeats the maneuver near a more challenging irregular shape and gravity field.">Irregular</button>
+            <button class="simulation-tab" type="button" role="tab" aria-selected="false" data-video="static/videos/irreg_conf2.mp4" data-title="Crewed module · Irregular body" data-caption="Configuration 2 combines thrusters and reaction wheels for a safe landing near an irregular body.">Crewed module</button>
+          </div>
         </div>
 
-        <div class="column is-one-third has-text-centered">
-          <img src="static/images/gs_cons.jpg"
-               alt="Glideslope cone constraint restricting the spacecraft to a safe approach path above the landing site"
-               style="width: 100%; max-width: 300px; height: auto; border-radius: 6px;">
-          <p class="is-size-7" style="color: #4a4a4a; margin-top: 0.75rem;">
-            A glideslope constraint keeps the spacecraft inside an approach cone to avoid collisions with unieven terrain or other objects.
-          </p>
-        </div>
-
-        <div class="column is-one-third has-text-centered">
-          <img src="static/images/bs_cons.jpg"
-               alt="Boresight cone constraint keeping the spacecraft's sensing axis pointed at the landing site"
-               style="width: 100%; max-width: 300px; height: auto; border-radius: 6px;">
-          <p class="is-size-7" style="color: #4a4a4a; margin-top: 0.75rem;">
-            A boresight cone keeps the spacecraft pointed towards the landing site throughout the approach.
-          </p>
-        </div>
-
-
-    </div>
-  </div>
-</section>
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      
-      <h2 class="title is-4 has-text-centered mb-5">Actuator Constraints as Force and Torque Constraints via Polytope Projection</h2>
-
-      
-      <figure style="margin: 0;">
-        <div class="image-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 1.5rem;">
-          <img src="static/images/polytope_proj.jpg" 
-               alt="Diagram showing the polytope of admissible actuator inputs projected to obtain the set of admissible control forces and torques" 
-               style="width: 100%; max-width: 363px; height: auto; aspect-ratio: 363 / 287; display: block; border-radius: 6px;">
-        </div>
-
-        <figcaption class="content has-text-justified" style="max-width: 1565px; margin: 0 auto; color: #4a4a4a;">
-          This approach maps the input constraints onto the lower-dimensional space of control forces and torques 
-          By projecting the polytopic actuator input set to the lower-dimensional space of forces and torques, the half-space representation of the resulting convex polytope yields an exact representation of the original constraints in a lower-dimensional space. 
-          We enforce these functions directly within a CBF-based safety filter. This guarantees that after allocating the forces and torques to the actuator input through the control allocation layer, the actuator input satisfies the original constraints.
-        </figcaption>
-      </figure>
-
-    </div>
-  </div>
-</section>
-
-    
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      
-      <h2 class="title is-4 has-text-centered mb-5">Control Architecture</h2>
-      
-      <figure style="margin: 0;">
-        <div class="image-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 1.5rem;">
-          <img src="static/images/Architecture.jpg" 
-               alt="Architecture for Safe control with state and input constraints under gravitational uncertainty. A desired control tracks a reference trajectory, while a safety-filter minimizes deviation from the desired input and guarantees safety despite gravitational uncertainty. An optimization-based allocation is then used to map the forces and torques to the actuator inputs." 
-               style="width: 100%; max-width: 1565px; height: auto; aspect-ratio: 1929 / 464; display: block; border-radius: 6px;">
-        </div>
-
-        <figcaption class="content has-text-justified" style="max-width: 1565px; margin: 0 auto; color: #4a4a4a;">
-          The proposed control architecture computes a control that satisfies state and input constraints under gravitational uncertainty. 
-          A desired control tracks a reference trajectory, while a safety-filter minimizes deviation from 
-          the desired input and guarantees safety despite gravitational uncertainty. An optimization-based 
-          allocation is then used to map the forces and torques to the actuator inputs.
-        </figcaption>
-      </figure>
-
-    </div>
-  </div>
-</section>
-
-    
-<section class="section hero is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3 has-text-centered">Simulations</h2>
-      
-      <div class="content has-text-centered" style="max-width: 800px; margin: 0 auto 2rem auto; padding: 0 15px;">
-        <p>
-          We evaluated the performance of the controller using two types of spacecraft: a robotic lander (similar to Hayabusa 2) and a Crewed Landing Module. 
-          Each spacecraft involves a different actuator configuration using bi-directional thrusters or reaction wheels. 
-          Moreover, two landing environments are considered: an ellipsoidal asteroid with uniform density distribution and an irregularly-shaped asteroid with non-uniform density distribution.
-        </p>
+        <figure class="simulation-viewer reveal reveal-delay">
+          <div class="simulation-screen">
+            <video id="results-video" controls muted autoplay loop playsinline preload="metadata" poster="static/images/Ellip_traj.png">
+              <source src="static/videos/ellip_conf1.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <figcaption>
+            <strong id="simulation-title">Robotic lander · Ellipsoidal body</strong>
+            <span id="simulation-caption">Configuration 1 uses bidirectional thrusters to descend toward a landing site on an ellipsoidal small body.</span>
+          </figcaption>
+        </figure>
       </div>
+    </section>
 
-      <div id="results-carousel" class="carousel results-carousel">
-        
-        <div class="item item-video1" style="display: flex; justify-content: center; align-items: center;">
-          <video poster="" id="video1" controls muted autoplay loop preload="metadata" 
-                 style="max-width: 600px; width: 100%; height: auto; aspect-ratio: 600 / 526; display: block; margin: 0 auto;">
-            <source src="static/videos/ellip_conf1.mp4" type="video/mp4">
-          </video>
-        </div>
-        
-        <div class="item item-video2" style="display: flex; justify-content: center; align-items: center;">
-          <video poster="" id="video2" controls muted autoplay loop preload="metadata" 
-                 style="max-width: 600px; width: 100%; height: auto; aspect-ratio: 600 / 526; display: block; margin: 0 auto;">
-            <source src="static/videos/irreg_conf1.mp4" type="video/mp4">
-          </video>
-        </div>
-        
-        <div class="item item-video3" style="display: flex; justify-content: center; align-items: center;">
-          <video poster="" id="video3" controls muted autoplay loop preload="metadata" 
-                 style="max-width: 600px; width: 100%; height: auto; aspect-ratio: 600 / 526; display: block; margin: 0 auto;">
-            <source src="static/videos/irreg_conf2.mp4" type="video/mp4">
-          </video>
+    <section class="section paper-section" id="paper">
+      <div class="page-shell paper-grid">
+        <div class="paper-card reveal">
+          <p class="section-index">04 · Paper & resources</p>
+          <h2>Manuscript and code</h2>
+          <p>The manuscript contains the complete derivations, observer analysis, safety guarantees, and numerical results. The implementation repository will be made public alongside the paper.</p>
+          <div class="resource-list">
+            <a href="https://arxiv.org/abs/2510.05895" target="_blank" rel="noopener">
+              <span class="resource-icon"><i class="fas fa-book-open" aria-hidden="true"></i></span>
+              <span><strong>arXiv preprint</strong><small>Paper · arXiv</small></span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="https://github.com/FelipeArenasUribe/Asteroid_Safe_Landing" target="_blank" rel="noopener">
+              <span class="resource-icon"><i class="fab fa-github" aria-hidden="true"></i></span>
+              <span><strong>Controller implementation</strong><small>Code release planned with the paper</small></span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
         </div>
 
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <div class="bibtex-header">
-      <h2 class="title">BibTeX</h2>
-      <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-        <i class="fas fa-copy"></i>
-        <span class="copy-text">Copy</span>
-      </button>
-    </div>
-    <p class="content" style="margin-bottom: 1rem;">
-      This journal manuscript is currently under review; the citation below will be updated upon acceptance.
-      A preliminary version of this work is available now as a
-      <a href="https://arxiv.org/abs/2510.05895" target="_blank">conference paper (ACC 2026 submission)</a>.
-    </p>
-    <pre id="bibtex-code"><code>@article{arenas2026safe,
-  title={Safe Position and Attitude Control for Landing on Small Celestial Bodies with Gravitational Uncertainty},
-  author={Arenas-Uribe, Felipe and Seigler, T. Michael and Hoagg, Jesse B.},
-  journal={Frontiers in Robotics and AI},
-  note={Under review},
-  year={2026}
+        <div class="bibtex-card reveal reveal-delay" id="bibtex">
+          <div class="bibtex-header">
+            <div>
+              <span>Citation</span>
+              <h3>BibTeX</h3>
+            </div>
+            <button class="copy-bibtex-btn" type="button" aria-label="Copy BibTeX citation">
+              <i class="fas fa-copy" aria-hidden="true"></i><span class="copy-text">Copy</span>
+            </button>
+          </div>
+          <pre><code id="bibtex-code">@article{arenas2026safe,
+  title   = {Safe Position and Attitude Control for
+             Landing on Small Celestial Bodies with
+             Gravitational Uncertainty},
+  author  = {Arenas-Uribe, Felipe and Seigler,
+             T. Michael and Hoagg, Jesse B.},
+  journal = {Frontiers in Robotics and AI},
+  note    = {Under review},
+  year    = {2026}
 }</code></pre>
-  </div>
-</section>
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Project Page Template</a> which was adopted from <a href="https://nerfies.github.io" target="_blank">Nerfies</a>.
-          </p>
-
+          <p>The citation will be updated when final publication details are available.</p>
         </div>
       </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-grid">
+      <div>
+        <a class="site-mark footer-mark" href="#top"><span class="site-mark-orbit" aria-hidden="true"></span><span>SCB Safe Landing</span></a>
+        <p>Safe autonomous landing on small celestial bodies under gravitational uncertainty.</p>
+      </div>
+      <div class="footer-links">
+        <a href="static/pdfs/Safe_Landing_on_Small_Celestial_Bodies.pdf" target="_blank" rel="noopener">Paper</a>
+        <a href="https://github.com/FelipeArenasUribe/Asteroid_Safe_Landing" target="_blank" rel="noopener">Code</a>
+        <a href="#bibtex">Citation</a>
+      </div>
+      <p class="footer-credit">Built from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.</p>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+  <button class="scroll-to-top" type="button" aria-label="Scroll to top" title="Scroll to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
 
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+</body>
+</html>
